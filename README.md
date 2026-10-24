@@ -11,13 +11,12 @@ Files included:
 - `main.py`: The main script to execute the experiments (E1-E5).
 
 ## 2. How to Run
-To reproduce the results in the report, please place these 5 files in the correct directory path:
-`local_code/stage_2_code/`
+To reproduce the results, please structure the files as follows:
+1. Place the 5 core files (`main.py`, `Method_MLP.py`, etc.) into: `local_code/stage_2_code/`
+2. Place the 5 base classes (`dataset.py`, `method.py`, etc.) into: `local_code/base_class/`
+3. Ensure the dataset is at: `data/stage_2_data/`
 
-Ensure the dataset is located at:
-`data/stage_2_data/train.csv` and `data/stage_2_data/test.csv`
-
-Then, run the main script from the project root directory:
+Then, run from the project root:
 ```bash
 python -m local_code.stage_2_code.main
 ```
