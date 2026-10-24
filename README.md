@@ -20,7 +20,7 @@ Ensure the dataset is located at:
 Then, run the main script from the project root directory:
 ```bash
 python -m local_code.stage_2_code.main
-
+```
 ## 3. Ablation Study Reproduction Guide (E1 - E5)
 To reproduce the 5 experiments mentioned in the report, please follow the settings below. All experiments use a fixed random seed (12) in `main.py`.
 
