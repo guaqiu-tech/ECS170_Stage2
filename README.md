@@ -20,3 +20,28 @@ Ensure the dataset is located at:
 Then, run the main script from the project root directory:
 ```bash
 python -m local_code.stage_2_code.main
+
+## 3. Ablation Study Reproduction Guide (E1 - E5)
+To reproduce the 5 experiments mentioned in the report, please follow the settings below. All experiments use a fixed random seed (12) in `main.py`.
+
+### Code Switching Instructions:
+- **Model Depth & Regularization**: Modify `USE_DEEP` and `USE_BN_DROPOUT` in `main.py`.
+- **Optimizer (E4)**: In `Method_MLP.py`, replace `torch.optim.Adam` with `torch.optim.SGD(self.parameters(), lr=0.01, momentum=0.9)`.
+- **Loss Function (E5)**: In `Method_MLP.py`, replace `nn.CrossEntropyLoss()` with `nn.CrossEntropyLoss(label_smoothing=0.1)`.
+
+### Experiment Configurations:
+- **E1 (Baseline)**: 
+  - `USE_DEEP = False`, `USE_BN_DROPOUT = False` (in main.py)
+  - Standard Adam & CrossEntropyLoss
+- **E2 (Overfitting Test)**:
+  - `USE_DEEP = True`, `USE_BN_DROPOUT = False` (in main.py)
+  - Standard Adam & CrossEntropyLoss
+- **E3 (Regularization)**:
+  - `USE_DEEP = True`, `USE_BN_DROPOUT = True` (in main.py)
+  - Standard Adam & CrossEntropyLoss
+- **E4 (Different Optimizer)**:
+  - `USE_DEEP = True`, `USE_BN_DROPOUT = True` (in main.py)
+  - **SGD Optimizer** (lr=0.01, momentum=0.9) & Standard CrossEntropyLoss
+- **E5 (Different Loss Function - Best Model)**:
+  - `USE_DEEP = True`, `USE_BN_DROPOUT = True` (in main.py)
+  - Standard Adam & **Label Smoothing CrossEntropyLoss** (0.1)
