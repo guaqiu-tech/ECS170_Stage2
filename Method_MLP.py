@@ -47,8 +47,8 @@ class Method_MLP(method, nn.Module):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         #optimizer = torch.optim.SGD(self.parameters(), lr=0.01, momentum=0.9)
 
-        loss_function = nn.CrossEntropyLoss()
-        #loss_function = nn.CrossEntropyLoss(label_smoothing=0.1)
+        #loss_function = nn.CrossEntropyLoss()
+        loss_function = nn.CrossEntropyLoss(label_smoothing=0.1)
 
         X_t = torch.FloatTensor(X)
         y_t = torch.LongTensor(y)
